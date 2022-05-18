@@ -20,6 +20,9 @@ import NavBar from "../components/NavBar";
 function App() {
   const [isAuth, setIsAuth] = React.useState<boolean>(false);
 
+  const [userName, setUserName] = React.useState<string>("");
+  const [userPass, setUserPass] = React.useState<string>("");
+
 
 // put the data in session variable
   const baseNoParse: any = sessionStorage.getItem("base")
@@ -52,7 +55,7 @@ function App() {
       </Container>
         ) : (
 
-          <AuthForm />
+          <AuthForm userName={userName} setUserName={setUserName} userPass={userPass} setUserPass={setUserPass} />
         )} 
     </Container>
   );

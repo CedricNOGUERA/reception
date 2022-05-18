@@ -10,7 +10,8 @@ import {
     Row,
   } from "react-bootstrap";
   import { Link } from "react-router-dom";
-const AuthForm = () => {
+const AuthForm = (userName: any, setUserName: any, userPass: any, setUserPass: any) => {
+    console.log(userName)
   return (
     <Container className="w-50 mt-5" style={{ background: "none" }}>
     <Row justify="space-around" align="middle">
@@ -26,16 +27,15 @@ const AuthForm = () => {
                 label="Username"
                 className="mb-3"
               >
-                {/* <Form.Label>Username</Form.Label> */}
                 <Form.Control
                   required
                   type="text"
                   placeholder="Enter username"
                   name="username"
-                  // value={userN}
-                  // onChange={(e) => {
-                  //   setUserN(e.currentTarget.value);
-                  // }}
+                  value={userName.userName}
+                  onChange={(e) => {
+                    userName.setUserName(e.currentTarget.value);
+                  }}
                 />
               </FloatingLabel>
               <Form.Text className="text-muted"></Form.Text>
@@ -53,10 +53,10 @@ const AuthForm = () => {
                   type="password"
                   placeholder="Password"
                   name="password"
-                  // value={userPass}
-                  // onChange={(e) => {
-                    // setUserPass(e.currentTarget.value);
-                  // }}
+                  value={userName.userPass}
+                  onChange={(e) => {
+                    userName.setUserPass(e.currentTarget.value);
+                  }}
                 />
               </FloatingLabel>
             </Form.Group>
