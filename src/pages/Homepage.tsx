@@ -21,14 +21,16 @@ function App() {
   const [isAuth, setIsAuth] = React.useState<boolean>(false);
 
 
+// put the data in session variable
+  const baseNoParse: any = sessionStorage.getItem("base")
+  const base: any = JSON.parse(baseNoParse)
 
 
   // Get : use axios to get data
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios("https://6221521cafd560ea69ad5ed1.mockapi.io/users")
-
-      console.log(result.data)
+      sessionStorage.setItem("base", JSON.stringify(result.data))
     }
     fetchData()
   }, [])
