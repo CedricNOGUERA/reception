@@ -61,9 +61,11 @@ const AuthForm = () => {
               </FloatingLabel>
             </Form.Group>
 
-            {/* <Button variant="primary" onClick={authentification}> */}
+            <Button variant="primary" 
+            // onClick={authentification}
+            >
               Submit
-            {/* </Button> */}
+            </Button>
           </Form>
         </Card>
       </Col>
