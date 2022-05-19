@@ -1,9 +1,19 @@
 import React from 'react'
 import { Button, Col, Container, ListGroup, Navbar, Row } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import "../assets/styles/NavBar.css";
 
 const NavBar = () => {
+   const loggedStr: any = sessionStorage.getItem('log')
+    const logged = JSON.parse(loggedStr)
+
+    const logout = () => {
+       
+        sessionStorage.removeItem('log')
+        window.location.href = "/"
+       
+    }
+   
   return (
     <Container fluid className="px-0">
         <Navbar bg="light">
@@ -12,14 +22,16 @@ const NavBar = () => {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                {/* {nomRecolt && (
+                {logged && logged.connected == true && (
                   <>
                   <Link to={"/"}>
-                  <Button onClick={delSession}>déconnexion</Button>
+                  <Button onClick={logout} >déconnexion</Button>
                   </Link>{" "}
-                  Signed in as: <a href="#login">{nomRecolt.uname}</a>
+                  Signed in as: <a href="#">
+                      {logged.nameuser}
+                  </a>
                   </>
-                )} */}
+                )}
               </Navbar.Text>
             </Navbar.Collapse>
           </Container>

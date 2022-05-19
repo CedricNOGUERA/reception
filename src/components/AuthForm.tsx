@@ -24,6 +24,10 @@ const AuthForm = (userName: any) => {
   const [formName, setformName] = React.useState<string>("");
   const [formPass, setformPass] = React.useState<string>("");
 
+  const logUser: any = sessionStorage.getItem("log");
+  const log: any = JSON.parse(logUser);
+
+
   const authentification = (e: any) => {
     e.preventDefault();
     const userAuth = dataBase.filter(
@@ -37,17 +41,19 @@ const AuthForm = (userName: any) => {
         setformPass(""),
         setIsAuth(true),
         setIsError(false),
-        console.log(userAuth))
-      : (setIsError(true), setIsAuth(false));
+        console.log(userAuth),
+        sessionStorage.setItem('log', JSON.stringify({'nameuser': formName,'role': userAuth[0].role, 'connected': true}))
+      ) : (setIsError(true), setIsAuth(false));
   };
 
   return (
-    <Container className="w-50 mt-5" style={{ background: "none" }}>
+    <Container className="w-100 mt-5" style={{ background: "none" }}>
       <Row justify="space-around" align="middle">
         <Col xs={12}>
           <Card className="p-5">
             <Card.Text>
-              <b>Log in</b>
+          <img src="https://img.icons8.com/stickers/144/user.png" alt="icon" loading="lazy" />
+             <p> <b>Log in</b></p>
             </Card.Text>
             <Form id="form">
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -99,7 +105,9 @@ const AuthForm = (userName: any) => {
                 </p>
               )}
 
-              <Button variant="primary" onClick={authentification}>
+              <Button variant="primary" 
+              onClick={authentification}
+              >
                 Submit
               </Button>
             </Form>

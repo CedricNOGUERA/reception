@@ -1,14 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import {
-  Button,
-  Card,
   Col,
   Container,
-  FloatingLabel,
-  Form,
-  ListGroup,
-  Navbar,
   Row,
 } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -17,7 +11,7 @@ import AuthForm from "../components/AuthForm";
 import MenuVertical from "../components/MenuVertical";
 import NavBar from "../components/NavBar";
 
-function App() {
+function Homepage() {
   const [isAuth, setIsAuth] = React.useState<boolean>(false);
 
   const [userName, setUserName] = React.useState<string>("");
@@ -28,29 +22,39 @@ function App() {
   const baseNoParse: any = sessionStorage.getItem("base")
   const base: any = JSON.parse(baseNoParse)
 
+  const loggedStr: any = sessionStorage.getItem('log')
+  const logged = JSON.parse(loggedStr)
 
   // Get : use axios to get data
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios("https://6221521cafd560ea69ad5ed1.mockapi.io/users")
-      sessionStorage.setItem("base", JSON.stringify(result.data))
+base && (
+
+  sessionStorage.setItem("base", JSON.stringify(result.data))
+  )
     }
     fetchData()
   }, [])
-
+  
+  useEffect(() => {
+    
+  }, [NavBar])
 
 
 
   return (
     <Container fluid className=" px-0 justify">
-      <NavBar />
-    {isAuth ? (
+      {/* <NavBar /> */}
+    {logged !== null && logged.connected == true ? (
 
       <Container fluid className=" px-0 justify">
         <Row className="menu">
-          <MenuVertical />
+          <MenuVertical role={logged.role} />
 
-          <Col className="content"></Col>
+          <Col className="content">
+
+          </Col>
         </Row>
       </Container>
         ) : (
@@ -61,4 +65,4 @@ function App() {
   );
 }
 
-export default App;
+export default Homepage;
