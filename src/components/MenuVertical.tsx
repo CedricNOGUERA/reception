@@ -5,9 +5,8 @@ import { Link } from 'react-router-dom'
 
 const MenuVertical = () => {
   return (
-    <Container fluid className=" px-0 justify">
-    <Row className="menu">
-                <Col xs={5} md={4} lg={3} style={{ height: "100vh" }}>
+   
+                <Col xs={5} md={4} lg={3} style={{ height: "100vh" }} className="bg-light">
                   <ListGroup variant="flush">
                     <ListGroup.Item>
                       {" "}
@@ -33,9 +32,7 @@ const MenuVertical = () => {
                     </ListGroup.Item>
                   </ListGroup>
                 </Col>
-                <Col className="content"></Col>
-              </Row>    
-        </Container>
+               
   )
 }
 

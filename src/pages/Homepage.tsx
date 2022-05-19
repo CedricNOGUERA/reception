@@ -55,7 +55,7 @@ function App() {
       </Container>
         ) : (
 
-          <AuthForm userName={userName} setUserName={setUserName} userPass={userPass} setUserPass={setUserPass} />
+          <AuthForm userName={userName} setUserName={setUserName} userPass={userPass} setUserPass={setUserPass} dataBase={base} isAuth={isAuth} setIsAuth={setIsAuth}/>
         )} 
     </Container>
   );

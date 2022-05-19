@@ -1,4 +1,12 @@
-.App {
+.content {
+  /* height: "100vh"; */
+  background-image: url('../images/truck.jpg') ;
+}
+
+
+
+
+/* .App {
   text-align: center;
 }
 
@@ -39,4 +47,4 @@
 
 button {
   font-size: calc(10px + 2vmin);
-}
+} */
