@@ -21,7 +21,7 @@ console.log(role.role)
                         loading="lazy"
                       />
                       {""}
-                      <Link className="menu" to="/user_board">
+                      <Link className="menu" to="/score">
                         <b>Pointage de marchandise</b>
                       </Link>
                     </ListGroup.Item>

@@ -26,14 +26,14 @@ const AuthForm = (userName: any) => {
 
   const logUser: any = sessionStorage.getItem("log");
   const log: any = JSON.parse(logUser);
-
+console.log(userName)
 
   const authentification = (e: any) => {
     e.preventDefault();
+    
     const userAuth = dataBase.filter(
       (filt: any) => filt.username == formName && filt.pass == formPass
     );
-
     userAuth[0] &&
     userAuth[0].username === formName &&
     userAuth[0].pass === formPass
@@ -52,8 +52,14 @@ const AuthForm = (userName: any) => {
         <Col xs={12}>
           <Card className="p-5">
             <Card.Text>
-          <img src="https://img.icons8.com/stickers/144/user.png" alt="icon" loading="lazy" />
-             <p> <b>Log in</b></p>
+              <img
+                src="https://img.icons8.com/stickers/144/user.png"
+                alt="icon"
+                loading="lazy"
+              />
+              <p>
+                <b>Log in</b>
+              </p>
             </Card.Text>
             <Form id="form">
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -95,19 +101,19 @@ const AuthForm = (userName: any) => {
                 </FloatingLabel>
               </Form.Group>
               {isError && (
-                <p style={{ color: "red" }}>
-                  <img
-                    src="https://img.icons8.com/stickers/25/delete-shield.png"
-                    alt="icon"
-                    loading="lazy"
-                  />{" "}
-                  <b>Erreur sur vos informations</b>
-                </p>
+                <>
+                  <p style={{ color: "red" }}>
+                    <img
+                      src="https://img.icons8.com/stickers/25/delete-shield.png"
+                      alt="icon"
+                      loading="lazy"
+                    />{" "}
+                    <b>Erreur sur vos informations</b>
+                  </p>
+                </>
               )}
 
-              <Button variant="primary" 
-              onClick={authentification}
-              >
+              <Button variant="primary" onClick={authentification}>
                 Submit
               </Button>
             </Form>

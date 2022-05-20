@@ -3,10 +3,11 @@ import { Button, Col, Container, ListGroup, Navbar, Row } from 'react-bootstrap'
 import { Link, Navigate } from 'react-router-dom'
 import "../assets/styles/NavBar.css";
 
-const NavBar = () => {
+const NavBar = (logg: any) => {
    const loggedStr: any = sessionStorage.getItem('log')
     const logged = JSON.parse(loggedStr)
-
+    const loggUser = logg.logg
+console.log(loggUser)
     const logout = () => {
        
         sessionStorage.removeItem('log')
@@ -22,13 +23,13 @@ const NavBar = () => {
             <Navbar.Toggle />
             <Navbar.Collapse className="justify-content-end">
               <Navbar.Text>
-                {logged && logged.connected == true && (
+                {loggUser && loggUser.connected == true && (
                   <>
                   <Link to={"/"}>
                   <Button onClick={logout} >déconnexion</Button>
                   </Link>{" "}
                   Signed in as: <a href="#">
-                      {logged.nameuser}
+                      {loggUser.nameuser}
                   </a>
                   </>
                 )}
