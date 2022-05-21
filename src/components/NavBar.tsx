@@ -7,7 +7,7 @@ const NavBar = (logg: any) => {
    const loggedStr: any = sessionStorage.getItem('log')
     const logged = JSON.parse(loggedStr)
     const loggUser = logg.logg
-console.log(loggUser)
+// console.log(loggUser)
     const logout = () => {
        
         sessionStorage.removeItem('log')

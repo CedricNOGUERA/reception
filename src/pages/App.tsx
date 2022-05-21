@@ -6,8 +6,9 @@ import NavBar from '../components/NavBar'
 import Homepage from './Homepage'
 import PrivateRoute from './PrivateRoute';
 import Profile from './Profile';
-import Score from './Score';
+import Order from './CheckOrder';
 import Usertab from './Usertab';
+import Score from './Score';
 
 const App = () => {
     const [isLogged, setIsLogged] = React.useState<boolean>(false)
@@ -39,7 +40,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Homepage db={base} />} />
           <Route path="/user_board" element={<Usertab />} />
-          <Route path="/score" element={<Score />} />
+          <Route path="/score/:id" element={<Score />} />
+          <Route path="/order" element={<Order />} />
           {/* <Route element={<PrivateRoute isLogged = {isLogged} />} > */}
           <Route path="/profile" element={<Profile />} />
           {/* </Route>  */}
